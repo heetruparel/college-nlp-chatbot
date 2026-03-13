@@ -1,21 +1,26 @@
-function sendMessage() {
+function sendMessage(){
 
-let input = document.getElementById("userInput").value;
+let input=document.getElementById("userInput").value;
 
-fetch("/chat", {
-method: "POST",
-headers: {
-"Content-Type": "application/json"
+let chatbox=document.getElementById("chatbox");
+
+chatbox.innerHTML+=`<div class="user">You: ${input}</div>`;
+
+fetch("/chat",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
 },
-body: JSON.stringify({message: input})
+body:JSON.stringify({message:input})
 })
-.then(response => response.json())
-.then(data => {
+.then(res=>res.json())
+.then(data=>{
 
-let chatbox = document.getElementById("chatbox");
+chatbox.innerHTML+=`<div class="bot">Bot: ${data.reply}</div>`;
 
-chatbox.innerHTML += "<p><b>You:</b> " + input + "</p>";
-chatbox.innerHTML += "<p><b>Bot:</b> " + data.reply + "</p>";
+chatbox.scrollTop=chatbox.scrollHeight;
 
 });
+
+document.getElementById("userInput").value="";
 }
