@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>College Chatbot</title>
+<title>College AI Assistant</title>
 <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
 
-<h2>College Information Chatbot</h2>
+<div class="chat-container">
 
-<div id="chatbox"></div>
+<div class="chat-header">
+College AI Assistant
+</div>
 
-<input id="userInput" placeholder="Ask a question">
+<div id="chatbox" class="chatbox"></div>
+
+<div class="input-area">
+<input id="userInput" placeholder="Ask about courses, fees, exams..." />
 <button onclick="sendMessage()">Send</button>
+</div>
+
+</div>
 
 <script src="/static/script.js"></script>
 
